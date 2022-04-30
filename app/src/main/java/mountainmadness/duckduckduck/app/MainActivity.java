@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView image;
     private TextView text;
     private Random rand;
+    private int randomIndex;
     private int primary;
     private int alt;
 
@@ -31,35 +33,48 @@ public class MainActivity extends AppCompatActivity {
         altImg = getResources().obtainTypedArray(R.array.altimg);
 
         rand = new Random();
-        int randomIndex = rand.nextInt(defaultImg.length());
+        randomIndex = rand.nextInt(defaultImg.length());
+        setImages(randomIndex);
 
-
-        primary = defaultImg.getResourceId(randomIndex, 0);
-        alt = altImg.getResourceId(randomIndex, 0);
         image = findViewById(R.id.main_image);
         text = findViewById(R.id.title_text);
-        setUpViews();
-        setUpButton();
+        image.setImageResource(primary);
+        text.setText("Tap the duck to duck the duck!");
+        setUpImage();
+        setUpRefreshButton();
     }
 
-    // Initialize data model object here
-    // Grab a image and file and set it to the object
-    private void setUpViews(){
-        image.setImageResource(primary);
-        text.setText("QUACK QUACK QUACK");
+    private void setImages(int index){
+        primary = defaultImg.getResourceId(index, 0);
+        alt = altImg.getResourceId(index, 0);
+    }
+
+    private void setUpRefreshButton() {
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(view -> {
+            int temp = rand.nextInt(defaultImg.length());
+            while(temp == randomIndex){
+                temp = rand.nextInt(defaultImg.length());
+            }
+            randomIndex = temp;
+
+            setImages(randomIndex);
+            text.setText("Tap the duck to duck the duck!");
+            image.setImageResource(primary);
+        });
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void setUpButton(){
+    private void setUpImage(){
         image.setOnTouchListener((v, event) -> {
             if(event.getAction() == MotionEvent.ACTION_DOWN){
                 // set alt image here
-                text.setText("QUACK QUACK QUACK");
+                text.setText("Duck!");
                 image.setImageResource(alt);
             }
             if(event.getAction() == MotionEvent.ACTION_UP){
                 // Set default img here
-                text.setText("UNQUACK UNQUACK UNQUACK");
+                text.setText("Not Ducked!");
                 image.setImageResource(primary);
             }
             return true;
