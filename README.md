@@ -1,7 +1,8 @@
 # duckduckduck - CSSS Mountain Madness 2022 Hackathon Project
 
 A simple and silly android app of a duck ducking. 🦆🦆🦆
-\n By Johnny Mai and Jerry Deng 
+
+By Johnny Mai and Jerry Deng 
 
 - jma184@sfu.ca
 - zrd1@sfu.ca
