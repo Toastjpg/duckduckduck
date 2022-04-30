@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="defaultimg">
+        <item>@drawable/b_duck</item>
+        <item>@drawable/g_duck</item>
+        <item>@drawable/r_duck</item>
+        <item>@drawable/s_duck</item>
+        <item>@drawable/y_duck</item>
+    </array>
+
+    <array name="altimg">
+        <item>@drawable/b_duckduck</item>
+        <item>@drawable/g_duckduck</item>
+        <item>@drawable/r_duckduck</item>
+        <item>@drawable/s_duckduck</item>
+        <item>@drawable/y_duckduck</item>
+    </array>
+</resources>

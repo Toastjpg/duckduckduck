@@ -2,13 +2,13 @@ package mountainmadness.duckduckduck.model;
 
 public class Animal {
     private String name;
-    private String imageName;
-    private String soundName;
+    private String image;
+    private String message;
 
-    public Animal(String name, String imageName, String soundName) {
+
+    public Animal(String name, String image) {
         this.name = name;
-        this.imageName = imageName;
-        this.soundName = soundName;
+        this.image = image;
     }
 
     public String getName() {
@@ -19,19 +19,11 @@ public class Animal {
         this.name = name;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public String getSoundName() {
-        return soundName;
-    }
-
-    public void setSoundName(String soundName) {
-        this.soundName = soundName;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
