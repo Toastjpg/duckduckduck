@@ -7,12 +7,9 @@ import android.content.res.TypedArray;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.util.Random;
 
@@ -26,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView text;
     private Random rand;
     private Handler handler;
-    private MediaPlayer mpduck;
-    private MediaPlayer mpalt;
+    private MediaPlayer mpDuck;
+    private MediaPlayer mpAlt;
     private boolean clickable = true;
     private int randomIndex;
     private int primary;
@@ -42,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         defaultImg = getResources().obtainTypedArray(R.array.defaultimg);
         altImg = getResources().obtainTypedArray(R.array.altimg);
-        mpduck = MediaPlayer.create(this, R.raw.quack_sound);
-        mpalt = MediaPlayer.create(this, R.raw.cow_sound);
+        mpDuck = MediaPlayer.create(this, R.raw.quack_sound);
+        mpAlt = MediaPlayer.create(this, R.raw.cow_sound);
 
         handler = new Handler();
 
@@ -109,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void playSound(boolean isDuck) {
         if ((isDuck)) {
-            mpduck.start();
+            mpDuck.start();
             quackCount++;
             quackTv.setText("Quack Count: " + quackCount);
         } else {
-            mpalt.start();
+            mpAlt.start();
         }
     }
 
