@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Random;
 
 import mountainmadness.duckduckduck.R;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private int randomIndex;
     private int primary;
     private int alt;
+    private int quackCount;
+    private TextView quackTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         text = findViewById(R.id.title_text);
         image.setImageResource(primary);
         text.setText(DEFAULT_TITLE_TEXT);
+
+        quackTv = findViewById(R.id.quack_count_text);
+
         setUpImage();
         setUpRefreshButton();
     }
@@ -103,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
     private void playSound(boolean isDuck) {
         if ((isDuck)) {
             mpduck.start();
+            quackCount++;
+            quackTv.setText("Quack Count: " + quackCount);
         } else {
             mpalt.start();
         }
